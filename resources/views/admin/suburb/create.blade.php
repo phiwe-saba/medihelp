@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 <div class="container">
-    <form action="{{ route('suburb.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('admin.suburb.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
 
         <div class="form-group pb-3">

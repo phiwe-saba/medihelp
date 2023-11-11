@@ -10,26 +10,24 @@ use Illuminate\Http\Request;
 class SuburbController extends Controller
 {
     public function index(){
-        return('suburbs.index');
+        return('admin.suburb.index');
     }
 
     public function create(){
         $cities = City::all();
 
-        return view('suburb.create', compact('cities'));
+        return view('admin.suburb.create', compact('cities'));
     }
 
-    public function post(Request $request, City $city){
+    public function store(Request $request, City $city){
         $validateData = $request->validate([
             'name' => 'required|string',
             'postal_code' => 'required|string',
             'city_id' => 'required'
         ]);
 
-        //Suburb::create($validateData);
-
         Suburb::create($validateData);
 
-        return redirect('/success');
+        return view('/sucess');
     }
 }
