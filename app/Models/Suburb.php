@@ -18,4 +18,8 @@ class Suburb extends Model
     public function nurse(){
         return $this->hasMany(Suburb::class);
     }
+
+    public function user(){
+        return $this->hasMany(Users::class);
+    }
 }

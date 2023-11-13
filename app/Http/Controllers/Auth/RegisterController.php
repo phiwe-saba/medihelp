@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Suburb;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -41,12 +42,19 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
+    /*public function create(){
+        $suburbs = Suburb::all();
+
+        return view('admin.nurse.create', compact('suburbs'));
+    }*/
+
     /**
      * Get a validator for an incoming registration request.
      *
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
+    
     protected function validator(array $data)
     {
         return Validator::make($data, [
@@ -56,6 +64,9 @@ class RegisterController extends Controller
             'cell_number' => ['required', 'string', 'max:255'],
             'id_number' => ['required', 'string', 'min:13'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'address_line1' => ['required', 'string'],
+            'address_line2' => ['required', 'string'],
+            'suburb_id' => ['required', 'exists:suburbs, id']
         ]);
     }
 
@@ -67,13 +78,17 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $suburbs = Suburb::all();
         return User::create([
             'name' => $data['name'],
             'surname' => $data['surname'],
             'email' => $data['email'],
             'cell_number' => $data['cell_number'],
             'id_number' => $data['id_number'],
-            'password' => Hash::make($data['password'])
+            'password' => Hash::make($data['password']),
+            'address_line1' => $data['address_line1'],
+            'address_line2' => $data['address_line2'],
+            'suburb_id' => $data['suburb_id']
         ]);
     }
 }

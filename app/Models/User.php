@@ -24,9 +24,15 @@ class User extends Authenticatable
         'cell_number',
         'id_number',
         'password',
-        'status'
+        'status',
+        'address_line1',
+        'address_line2',
+        'suburb_id'
     ];
 
+    public function suburb(){
+        return $this->belongsTo(Suburb::class);
+    }
     /**
      * The attributes that should be hidden for serialization.
      *

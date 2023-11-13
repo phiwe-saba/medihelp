@@ -82,6 +82,36 @@
                         </div>
 
                         <div class="row mb-3">
+                            <label for="address_line1" class="col-md-4 col-form-label text-md-end">{{ __('Address Line 1') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="address_line1" type="text" class="form-control @error('address_line1') is-invalid @enderror" name="address_line1" value="{{ old('address_line1') }}" required autocomplete="address_line1" autofocus>
+
+                                @error('address_line1')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="address_line2" class="col-md-4 col-form-label text-md-end">{{ __('Address Line 2') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="address_line2" type="text" class="form-control @error('address_line2') is-invalid @enderror" name="address_line2" value="{{ old('address_line2') }}" autocomplete="address_line2" autofocus>
+
+                                @error('address_line2')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        
+
+                        <div class="row mb-3">
                             <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
 
                             <div class="col-md-6">
